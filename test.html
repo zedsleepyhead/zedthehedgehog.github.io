@@ -1,0 +1,1262 @@
+<html><head>
+     
+    <meta name="google-site-verification" content="m_3TAXDreGTFyoYnEmU9mcKB4Xtw5mw6yRkuJtXRKxM">
+    <title>Scrapts</title>
+    
+    <link rel="stylesheet" href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/vendor/redmond/jquery.ui.all.css">
+    
+        <link href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/css/main.css" rel="stylesheet" type="text/css">
+   
+   <link rel="stylesheet" href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//css/handheld.css" media="handheld, only screen and (max-device-width:480px)">
+
+    
+    <!-- base forum css styles -->
+    <link href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//djangobb_forum/themes/base.css" rel="stylesheet">
+    <!-- Forum theme colour scheme -->
+    <link href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//djangobb_forum/themes/scratch_default_theme_copy/css/default_cs.css" rel="stylesheet">
+    <link href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//djangobb_forum/themes/scratch_default_theme_copy/style.css" rel="stylesheet">
+    <!-- Highlightjs goodies -->
+    <link href="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//djangobb_forum/css/pygments.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__//js/jquery.min.js"></script><template id="scratch-addons" data-path="chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/" data-userscripts="[]"></template><script type="module" src="chrome-extension://fbeffbjdlemaoicjdapfpikkikjoneco/content-scripts/inject/module.js"></script>
+    <script type="text/javascript" src="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/js/lib/underscore-min.js"></script>
+    
+    <script>
+      window.console||(window.console={log:$.noop,error:$.noop,debug:$.noop}); // ensure console fails gracefully when missing
+      // define _gaq here to log errors with GA. ga.js script gets loaded furthe down
+      var sessionCookieName = 'scratchsessionsid';
+      var _gaq = window._gaq || [];
+      _gaq.push(['_setAccount', 'UA-30688952-1']);
+      _gaq.push(['_setSampleRate', '10']);
+      _gaq.push(['_trackPageview']);
+      
+      
+      
+      _gaq.push(['_setCustomVar', 2, 'status', 'logged_in', 2]);
+      
+      
+
+      
+    </script>
+    <script type="text/javascript">
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function setCookie(name, value, days) {
+            var expires;
+
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            } else {
+                expires = "";
+            }
+            document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+        }
+    </script>
+    
+    <script>
+      
+
+var Scratch = Scratch || {};
+Scratch.INIT_DATA = Scratch.INIT_DATA || {};
+
+
+
+Scratch.INIT_DATA.ADMIN = false;
+Scratch.INIT_DATA.LOGGED_IN_USER = {
+  
+  model: {
+    username: 'zedthehedgehog',
+    username_truncated: 'zedthehedgehog',
+    has_outstanding_email_confirmation: 'false',
+    
+    id: 60576675,
+    profile_url: '/users/zedthehedgehog/',
+    thumbnail_url: '//uploads.scratch.mit.edu/users/avatars/60576675.png'
+     
+  },
+  
+  options: {
+    
+      authenticated: true
+     
+    
+  }
+};
+Scratch.INIT_DATA.comment_posting = true;
+
+Scratch.INIT_DATA.BROWSERS_SUPPORTED = {
+
+  chrome: 35,
+  firefox: 31,
+  msie: 8,
+  safari: 7
+};
+
+Scratch.INIT_DATA.TEMPLATE_CUES = {
+
+  unsupported_browser: true,
+  welcome: true,
+  confirmed_email: false
+};
+  
+
+
+
+
+
+
+Scratch.INIT_DATA.IS_IP_BANNED = false;
+
+Scratch.INIT_DATA.GLOBAL_URLS = {
+  'media_url': '//uploads.scratch.mit.edu/',
+  'static_url': '//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/',
+  'static_path': '/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/'
+}
+
+Scratch.INIT_DATA.IS_SOCIAL = true;
+
+Scratch.ALERT_MSGS = {
+  'error': 'Oops! Something went wrong',
+  'inappropriate-generic': 'Hmm...the bad word detector thinks there is a problem with your text. Please change it and remember to <a target="_blank" href="/community_guidelines/">be respectful</a>.',
+  'image-invalid': 'Upload a valid image. The file you uploaded was either not an image or a corrupted image.',
+  'thumbnail-missing': 'Missing file',
+  'thumbnail-upload-bad': 'Bad upload',
+  'thumbnail-too-large': 'Maximum file size is 512 KB and less than 500x500 pixels.',
+
+  'inappropriate-comment': 'Hmm...the bad word detector thinks there is a problem with your comment. Please change it and remember to <a target="_blank" href="/community_guidelines/">be respectful</a>.',
+  'comment-has-chat-site': 'Uh oh! This comment contains a link to a website with unmoderated chat. For safety reasons, please do not link to these sites!',
+
+  'empty-comment': "You can't post an empty comment!",
+  'delete_comment': '<div title="Delete Comment?"><p>Are you sure you want to delete this comment? If the comment is mean or disrespectful, please click report instead, to let the Scratch Team know about it.</p></div>',
+  'report_comment': '<div title="Report Comment?"></p>Are you sure you want to report this comment?</p></div>',
+  'report_comment_educator': '<div title="Delete Comment?"></p>Are you sure you want to delete this comment?</p></div>',
+  'followed': 'You are now following ',
+  'unfollowed': 'You are no longer following ',
+  'comment-spam': "Hmm, seems like you've posted the same comment a bunch of times. Please don't spam.",
+  'comment-flood': "Woah, seems like you're commenting really quickly. Please wait longer between posts.",
+  'comment-muted': "Hmm, the filterbot is pretty sure your recent comments weren't ok for Scratch, so your account has been muted for the rest of the day. :/",
+  'comment-muted-duration': "Hmm, the filterbot is pretty sure your recent comments weren't ok for Scratch, so you cannot make comments until %(duration)s",
+  'comment-unconstructive': "Hmm, the filterbot thinks your comment may be mean or disrespectful. Remember, most projects on Scratch are made by people who are just learning how to program. Read the <a href='/community_guidelines'>community guidelines</a>, and be nice.",
+  'comment-unconstructive-duration': "The Scratch comment filter thinks your comment was unconstructive. You won't be able to post comments until %(duration)s.",
+  'comment-disallowed': "Hmm, it looks like comments have been turned off for this page. :/",
+  'project-complaint-length': "That's too short. Please describe in detail what's inappropriate or disrespectful about the project.",
+  'project-complaint-buglength': "That's too short! Please describe in detail what you expected the project to do, and how exactly it is broken. Thanks!",
+  'editable-text-too-long': "That's too long! Please find a way to shorten your text."
+
+}
+
+
+    </script>
+    
+
+    <meta property="og:type" content="website">
+    
+    <meta property="og:description" content="Make games, stories and interactive art with Scratch. (scratch.mit.edu)">
+    
+
+    
+    <meta property="og:title" content="Scratch - Imagine, Program, Share">
+    <meta property="og:url" content="https://scratch.mit.edu/discuss/">
+    
+
+  <style><![CDATA[.sb-label{font-family:Lucida Grande,Verdana,Arial,DejaVu Sans,sans-serif;font-weight:700;fill:#fff;font-size:10px;word-spacing:+1px}.sb-obsolete{fill:#d42828}.sb-motion{fill:#4a6cd4}.sb-looks{fill:#8a55d7}.sb-sound{fill:#bb42c3}.sb-pen{fill:#0e9a6c}.sb-events{fill:#c88330}.sb-control{fill:#e1a91a}.sb-sensing{fill:#2ca5e2}.sb-operators{fill:#5cb712}.sb-variables{fill:#ee7d16}.sb-list{fill:#cc5b22}.sb-custom{fill:#632d99}.sb-custom-arg{fill:#5947b1}.sb-extension{fill:#4b4a60}.sb-grey{fill:#969696}.sb-bevel{filter:url(#bevelFilter)}.sb-input{filter:url(#inputBevelFilter)}.sb-input-number,.sb-input-number-dropdown,.sb-input-string{fill:#fff}.sb-literal-dropdown,.sb-literal-number,.sb-literal-number-dropdown,.sb-literal-string{font-weight:400;font-size:9px;word-spacing:0}.sb-literal-number,.sb-literal-number-dropdown,.sb-literal-string{fill:#000}.sb-darker{filter:url(#inputDarkFilter)}.sb-outline{stroke:#fff;stroke-opacity:.2;stroke-width:2;fill:none}.sb-define-hat-cap{stroke:#632d99;stroke-width:1;fill:#8e2ec2}.sb-comment{fill:#ffffa5;stroke:#d0d1d2;stroke-width:1}.sb-comment-line{fill:#ffff80}.sb-comment-label{font-family:Helevetica,Arial,DejaVu Sans,sans-serif;font-weight:700;fill:#5c5d5f;word-spacing:0;font-size:12px}]]></style></head>
+
+  <body class="" data-new-gr-c-s-check-loaded="14.987.0" data-gr-ext-installed="">
+  
+    <div id="pagewrapper">
+      
+      
+      <div id="topnav">
+      <div class="innerwrap">
+        <div class="container">
+          <a href="/" class="logo"><span class="scratch"></span></a>
+          <ul class="site-nav">
+            <li><a id="project-create" href="/projects/editor/">Upload</a></li><li><a href="/explore/projects/all">Explore</a></li><li><a href="/discuss">Design Credit</a></li><li><a href="/ideas">The Team</a></li><li class="last"><a href="/about/">About</a></li>
+          </ul>
+          
+          
+          
+          
+          
+          
+          <script type="text/template" id="template-account-nav-logged-out">
+          <ul class="account-nav" >
+              <li class="join-scratch"><a href="/join">Join Scratch</a></li><li id="login-dropdown" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>Sign in</span></span><div class="popover bottom dropdown-menu"><div class="arrow"></div><div class="popover-content" ><form method="post" id="login" action="#"><label for="username">Username</label><input type="text" id="login_dropdown_username" name="username" maxlength="30" class="wide username" /><label for="password" class="password">Password</label><input type="password" name="password" class="wide password" /><div class="ajax-loader" style="display:none; float: left;"></div><button type="submit">Sign in</button><span class="forgot-password"><a href="/accounts/password_reset/">Need help?</a></span><div class="error"></div></form></div></div></li><li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
+          </ul>
+          </script>
+          <script type="text/template" id="template-account-nav-logged-in">
+          <ul class="account-nav logged-in"><li class="messages"><a title="messages - updates and notices" href="/messages" class="messages-icon"><span class="notificationsCount none">0</span></a></li><li class="my-stuff"><a title="my stuff - manage projects and studios" href="/mystuff/" class="mystuff-icon"></a></li><li class="logged-in-user dropdown"><span class="user-name dropdown-toggle" data-toggle="dropdown"><img class="user-icon" src="<%- LOGGED_IN_USER.model.thumbnail_url %>" width="24" height="24"><%- LOGGED_IN_USER.model.username_truncated %><span class="caret"></span></span><div class="dropdown-menu blue" ><ul class="user-nav"><li><a href="<%- LOGGED_IN_USER.model.profile_url %>">Profile</a></li><li><a href="/mystuff/">My Stuff</a></li><% if (LOGGED_IN_USER.model.is_educator){ %><li><a href="/educators/classes/">My Classes</a></li><% } %><% if (LOGGED_IN_USER.model.is_student){ %><li><a href="/classes/<%- LOGGED_IN_USER.model.classroom_id %>/">My Class</a></li><% } %><li><a href="/accounts/settings/">Account settings</a></li><li id="logout" class="logout divider"><form method="post" action="/accounts/logout/"><input type='hidden' name='csrfmiddlewaretoken' value='fi1ZTDyu9JhEuTTNQZH5TVKCehwVvGLb' /><input type="submit" value="Sign out"></form></li></ul></div></li></ul>
+          </script>
+          <script type="text/javascript" src="//cdn.scratch.mit.edu/scratchr2/static/__31603c47ef357e5c3cfbc182f95181bb__/js/account-nav.js"></script>
+        </div>
+        <iframe class="iframeshim" frameborder="0" scrolling="no"><html><head></head><body></body></html></iframe>
+      </div><!-- innerwrap -->
+      </div>
+        
+
+      <div class="confirm-email banner" data-cue="confirmed_email" style="display:none;">
+        <div class="container">
+          
+          <span><a id="confirm-email-popup" href="#">Confirm your email</a> to enable sharing. <a href="/help/faq/#accounts">Having trouble?</a></span>
+          <div class="close">x</div>
+        </div>
+      </div>
+
+      <div class="email-outage banner" style="display:none; background-color:#FF661A;">
+        <div class="container">
+          <span>We are experiencing a disruption with email delivery. If you are not receiving emails from us, please try after 8am EST.</span>
+          <div class="close">x</div>
+        </div>
+      </div>
+
+        
+        <div class="container" id="content">
+        
+
+<div id="djangobbwrap">
+<div id="djangobbindex" class="djangobb">
+<div id="brdheader" class="box">
+	<div class="box-head">
+		<h2><!--<span><a href="/discuss/">-->Welcome to Scrapts!<!--</a></span>--></h2>
+		<p><span></span></p>
+	</div>
+	<div id="brdmenu" class="box-content">
+		
+			<ul class="conr">
+				<li></li>
+			</ul>
+		
+		<ul>
+		
+			<li id="navindex">Scrapts is a non-profit organization that allows you to upload resources for other Scratcher's to use, things like costumes, sprites, scripts, backdrops, sounds, and much more. Scrapts' purpose is to revive the now defunct Scratch Resources and OpenSprites.
+    <br><br> The Scratch Guidelines also apply here, so make sure that what you upload follows it, otherwise, you may get a ban.
+<br><br>Please note that this is not affiliated with MIT or the Scratch Team in any way.</li>
+			
+		
+		</ul>
+	</div>
+</div>
+
+
+
+
+    
+        
+    
+
+    
+<div id="idx1" class="blocktable">
+
+    <div class="box" id="category_body_4">
+        <div class="box-head">
+            <h4 id="category_head_4">
+                <a class="toggle" href="#">Toggle shoutbox</a>
+                Featured Resources
+            </h4>
+        </div>
+        <div class="box-content">
+            <div class="box-content">
+            
+                
+                    </div><table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="tcl" scope="col">Sprites</th>
+                        <th class="tc2" scope="col">Views</th>
+                        <th class="tc3" scope="col">Comments</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Forest Landscape Parralax</a>
+                  
+                </h3>
+                by zedthehedgehog
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/6/">Pixelated Cat</a>
+                  
+                </h3>by silvxrcat</div>
+        </div>
+    </td>
+
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Platformer Character Code</a>
+                  
+                </h3>
+                by zedthehedgehog
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+
+                    <tr>
+                        <th class="tcl" scope="col">Scripts</th>
+                        <th class="tc2" scope="col">Views</th>
+                        <th class="tc3" scope="col">Comments</th>
+                        
+                    </tr>
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Platformer Code</a>
+                  
+                </h3>
+                by zedthehedgehog
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+<tr>
+                        <th class="tcl" scope="col">Costumes/Backdrops</th>
+                        <th class="tc2" scope="col">Views</th>
+                        <th class="tc3" scope="col">Comments</th>
+                        
+                    </tr>
+                
+                
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Pixelated Cat Artwork</a>
+                  
+                </h3>by silvxrcat</div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/6/">Trees</a>
+                  
+                </h3>by silvxrcat</div>
+        </div>
+    </td>
+
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Car</a>
+                  
+                </h3>
+                by zedthehedgehog
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+
+
+                    <tr>
+                        <th class="tcl" scope="col">Sounds</th>
+                        <th class="tc2" scope="col">Views</th>
+                        <th class="tc3" scope="col">Comments</th>
+                        
+                    </tr>
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/5/">Energetic BGM</a>
+                  
+                </h3>
+                by zedthehedgehog
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">300</td>
+    <td class="tc3">128</td>
+    
+</tr>
+                
+
+                
+                
+            
+        
+                
+
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    <div class="box" id="category_body_6">
+        <div class="box-head">
+            <h4 id="category_head_6">
+                <a class="toggle" href="#">Toggle shoutbox</a>
+                Scratch Around the World
+            </h4>
+        </div>
+        <div class="box-content">
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="tcl" scope="col">Forum</th>
+                        <th class="tc2" scope="col">Topics</th>
+                        <th class="tc3" scope="col">Posts</th>
+                        <th class="tcr" scope="col">Last Post</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/55/">Africa</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">29</td>
+    <td class="tc3">236</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4685275/">Dec. 12, 2020 20:16:31</a>
+                <span class="byuser">by Firegod101exe_yt</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/36/">Bahasa Indonesia</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">41</td>
+    <td class="tc3">470</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4680054/">Dec. 11, 2020 01:21:52</a>
+                <span class="byuser">by ColinGo1st</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/33/">Català</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">54</td>
+    <td class="tc3">149</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4660464/">Dec. 4, 2020 10:42:21</a>
+                <span class="byuser">by ArnauAB</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/13/">Deutsch</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">1464</td>
+    <td class="tc3">16123</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689533/">Today 12:33:10</a>
+                <span class="byuser">by Fyndora</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/26/">Ελληνικά</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">159</td>
+    <td class="tc3">761</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4639493/">Nov. 27, 2020 14:10:10</a>
+                <span class="byuser">by gixoplye2france</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/14/">Español</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">1417</td>
+    <td class="tc3">9086</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689316/">Today 11:33:04</a>
+                <span class="byuser">by rafavera</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/59/">فارسی</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">17</td>
+    <td class="tc3">87</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688975/">Today 10:36:31</a>
+                <span class="byuser">by DawnRooney27</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/15/">Français</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">4546</td>
+    <td class="tc3">71238</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689522/">Today 12:30:41</a>
+                <span class="byuser">by Apic-rep</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/22/">עברית</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">117</td>
+    <td class="tc3">568</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4678315/">Dec. 10, 2020 13:18:42</a>
+                <span class="byuser">by yinon122</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/23/">한국어</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">2331</td>
+    <td class="tc3">20694</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688350/">Today 07:18:20</a>
+                <span class="byuser">by choenan</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/21/">Italiano</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">1212</td>
+    <td class="tc3">9549</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689286/">Today 11:29:11</a>
+                <span class="byuser">by Mobiles_Games</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/19/">Nederlands</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">441</td>
+    <td class="tc3">2940</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688603/">Today 09:02:17</a>
+                <span class="byuser">by ninjago_k_2011</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/18/">日本語</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">3460</td>
+    <td class="tc3">213955</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688612/">Today 09:06:01</a>
+                <span class="byuser">by kensin3050</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/24/">Norsk</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">28</td>
+    <td class="tc3">172</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4669946/">Dec. 7, 2020 19:30:39</a>
+                <span class="byuser">by McFutureBros</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/17/">Polski</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">1714</td>
+    <td class="tc3">20641</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688466/">Today 08:20:08</a>
+                <span class="byuser">by j_a_n_t_i</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/20/">Português</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">662</td>
+    <td class="tc3">4277</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689478/">Today 12:17:58</a>
+                <span class="byuser">by Fupicat</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/27/">Pусский</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">1204</td>
+    <td class="tc3">32896</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689330/">Today 11:36:34</a>
+                <span class="byuser">by Agzam4</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/25/">Türkçe</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">814</td>
+    <td class="tc3">8169</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4689116/">Today 11:00:46</a>
+                <span class="byuser">by Dark_Carnage39</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/16/">中文</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">2201</td>
+    <td class="tc3">16579</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688183/">Today 04:02:21</a>
+                <span class="byuser">by TerryMoo</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/34/">Other Languages</a>
+                  
+                </h3>
+                For languages not listed above
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">400</td>
+    <td class="tc3">3967</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4688977/">Today 10:36:39</a>
+                <span class="byuser">by GunChleoc</span>
+            
+        
+    </td>
+</tr>
+
+                
+                    
+
+
+
+
+<tr>
+    <td class="tcl">
+        <div class="intd">
+            <div class="forumicon">
+                <div class="nosize"><!-- --></div>
+            </div>
+            <div class="tclcon">
+                <h3><a href="/discuss/28/">Translating Scratch</a>
+                  
+                </h3>
+                
+                
+            </div>
+        </div>
+    </td>
+    <td class="tc2">288</td>
+    <td class="tc3">2258</td>
+    <td class="tcr">
+        
+            
+                <a href="/discuss/post/4687437/">Yesterday 18:40:43</a>
+                <span class="byuser">by Supersonic3765</span>
+            
+        
+    </td>
+</tr>
+
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+    
+</div>
+</div>
+        
+    
+
+
+
+
+
+        </div>
+
+
+        
+        
+    </div>
+    <div id="footer">
+      <div class="container">
+        <style>
+          #footer ul.footer-col li {
+            list-style-type:none;
+            display: inline-block;
+            width: 184px;
+            text-align: left;
+            vertical-align: top;
+          }
+
+          #footer ul.footer-col li h4 {
+            font-weight: bold;
+            font-size: 14px;
+            color: #666;
+          }
+
+        </style>
+        <ul class="clearfix footer-col">
+          <li>
+            <h4>About</h4>
+
+</body></html>

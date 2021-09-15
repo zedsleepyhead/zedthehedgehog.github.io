@@ -129,18 +129,11 @@ float:left;
                 <p style="text-align: center;"><em><br>
                   </em></p>
                 <p style="text-align: center;"><em>2021 Zed2345/Peacecat,
-                    created by Thomas B.</em></p>
-                <p style="text-align: center;"><em><br>
+                    created by Thomas B.<br>
                   </em></p>
-                <p><em></em></p>
-                <center><em><img src="images/svg/peacecat.svg" width:="" 66px;=""
-                      height:="" 67px;"="" style="width: 55px; height: 55px;"><br>
-                    <br>
-                  </em> </center>
+                <p><br>
+                  <code><u></u></code></p>
               </div>
-              <code></code>
-              <p></p>
-              <p></p>
             </div>
           </div>
         </div>

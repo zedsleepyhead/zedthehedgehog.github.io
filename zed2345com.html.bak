@@ -70,17 +70,19 @@ float:left;
                 </p>
                 <p style="text-align: left;"><br>
                 </p>
+                <p><br>
+                </p>
                 <p><u></u> </p>
                 <p></p>
               </div>
               <div class="text-3 font-bold leading-tight text-gray-900"> <code><u>
                   </u></code>
                 <p></p>
-                <p><u> <img src="images/svg/potfoliobutton.svg" style="float:left"><img
-                      src="images/svg/projectsbutton.svg" style="float:left"><img
-                      src="images/svg/softwarebutton.svg" style="float:left"><img
-                      src="images/svg/documentbutton.svg" style="float:left"></u>
-                </p>
+                <p><u> <img src="file:///C:/Users/tgbma/Downloads/potfoliobutton.svg"
+                      style="float:left"><img src="file:///C:/Users/tgbma/Downloads/projectsbutton.svg"
+                      style="float:left"><img src="file:///C:/Users/tgbma/Downloads/softwarebutton.svg"
+                      style="float:left"><img src="file:///C:/Users/tgbma/Downloads/documentbutton.svg"
+                      style="float:left"></u> </p>
                 <p><u></u> </p>
                 <p><br>
                 </p>
